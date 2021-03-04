@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albuns</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+</head>
+
+<body class="container">
+
+    <h1>Albuns</h1>
+
+    <div class="sample">Clique no botão abaixo para exibir os albuns</div><br>
+
+    <table style="color: white;" border="1" class="table tabela"></table>
+
+    <button id="botao" class="Btn btn btn-dark">Exibir Albuns</button>
+
+    <a href="index.html" class="btn btn-danger">Voltar Para o Menu</a>
+
+    <script>
+        let sampleEle = document.querySelector(".table");
+        document.querySelector(".Btn").addEventListener("click", () => {
+            fetch("https://jsonplaceholder.typicode.com/albums")
+                .then((response) => response.json())
+                .then((result) => {
+                    result.forEach((element) => {
+                        sampleEle.innerHTML += "<td>" + element.title;
+                        document.getElementById("botao").disabled = true;
+                    });
+                });
+        });
+    </script>
+
+</body>
+
+</html>
